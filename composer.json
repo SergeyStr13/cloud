@@ -1,0 +1,43 @@
+{
+	"repositories": [
+		{
+			"type": "path",
+			"url": "src/pandora3/Core",
+			"options": {
+				"symlink": true
+			}
+		},
+		{
+			"type": "path",
+			"url": "src/pandora3/Libs",
+			"options": {
+				"symlink": true
+			}
+		},
+		{
+			"type": "path",
+			"url": "src/pandora3/Plugins",
+			"options": {
+				"symlink": true
+			}
+		},
+		{
+			"type": "path",
+			"url": "src/pandora3/Widgets",
+			"options": {
+				"symlink": true
+			}
+		}
+	],
+
+	"require": {
+		"pandora3/core": "dev-master",
+		"pandora3/libs": "dev-master",
+		"pandora3/plugins": "dev-master",
+		"pandora3/widgets": "dev-master",
+
+		"twig/twig": "2.x-dev",
+		"illuminate/database": "5.7.17",
+		"illuminate/events": "5.7.19"
+	}
+}

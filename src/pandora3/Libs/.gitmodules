@@ -1,0 +1,9 @@
+[submodule "Database"]
+	path = Database
+	url = https://github.com/PandoraTeam/pandora3-lib-Database
+[submodule "Time"]
+	path = Time
+	url = https://github.com/PandoraTeam/pandora3-lib-Time
+[submodule "Session"]
+	path = Session
+	url = https://github.com/PandoraTeam/pandora3-lib-Session

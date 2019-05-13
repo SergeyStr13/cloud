@@ -1,0 +1,7 @@
+RewriteEngine on
+
+# редирект на https
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^/?(.*)$ https://new-edu.rsreu.ru/$1 [R=301,L]
+
+RewriteRule ^(.*)$ public/$1 [L]
