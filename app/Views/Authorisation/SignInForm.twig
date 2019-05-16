@@ -1,0 +1,47 @@
+{# @var form \Pandora3\Widgets\Form\Form #}
+{% extends layout %}
+
+{% set pageTitle = 'Авторизация' %}
+
+{% block scripts %}
+<script>
+	var form = byId('sign-in-form');
+
+	const keyCodes = {
+		RETURN: 13
+	};
+
+	function onKeyDown(e) {
+		var key = (e.which || e.keyCode);
+		if (
+			key === keyCodes.RETURN &&
+			form.login.value !== '' &&
+			form.password.value !== ''
+		) {
+			form.submit();
+		}
+	}
+</script>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<section class="section" style="margin-top: 10px; margin-left: 50px;">
+			<h1>{{ pageTitle }}</h1>
+			<div class="width-7">
+				{% autoescape false %}
+					{{ form.messages }}
+					{{ form.begin({id: 'sign-in-form'}) }}
+						{{ form.field('login', {attribs: 'onkeydown="onKeyDown()"'}) }}
+						{{ form.field('password', {attribs: 'onkeydown="onKeyDown()"'}) }}
+						{% spaceless %}
+							<div class="form-toolbar">
+								{{ form.button('signIn') }}
+							</div>
+						{% endspaceless %}
+					{{ form.end }}
+				{% endautoescape %}
+			</div>
+		</section>
+	</div>
+{% endblock %}

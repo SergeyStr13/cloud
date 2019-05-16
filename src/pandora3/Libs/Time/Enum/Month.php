@@ -27,7 +27,7 @@ class Month {
 	 * @param int|null $year
 	 * @return int
 	 */
-	public static function numberOfDays(int $month, $year = null): int {
+	public static function numberOfDays(int $month, ?int $year = null): int {
 		if ($year === null) {
 			$year = (int) date('Y');
 		}

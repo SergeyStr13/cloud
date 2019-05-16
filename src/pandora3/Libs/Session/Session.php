@@ -15,7 +15,7 @@ class Session implements SessionInterface {
 	/**
 	 * @param string|null $id
 	 */
-	public function __construct($id = null) {
+	public function __construct(?string $id = null) {
 		if ($id === null) {
 			session_start(); // todo: check already started
 			$id = session_id();

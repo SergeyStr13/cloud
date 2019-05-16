@@ -142,7 +142,7 @@ class Date extends \DateTimeImmutable {
 
 	/**
 	 * @param string $interval
-	 * @return bool|static
+	 * @return static
 	 */
 	public function subInterval(string $interval) {
 		$date = $this->sub(DateInterval::createFromDateString($interval));
@@ -150,7 +150,7 @@ class Date extends \DateTimeImmutable {
 	}
 
 	/**
-	 * @param nuLL|string|static $date
+	 * @param string|DateTimeInterface|null $date
 	 * @param string $format
 	 * @return string
 	 */

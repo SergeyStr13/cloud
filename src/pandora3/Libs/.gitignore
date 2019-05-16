@@ -1,4 +1,6 @@
-Console
-DomainModel
-File
-RewriteRouter
+/Console/
+/DomainModel/
+/File/
+/RewriteRouter/
+/Renderer/
+/Widget/

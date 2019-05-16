@@ -40,6 +40,7 @@ class FieldSelect extends FormField {
 	}
 	
 	protected function beforeRender(array $context): array {
+		$context = parent::beforeRender($context);
 		if ($context['submitOnChange'] ?? false) {
 			$attribs = $context['attribs'] ?? '';
 			$context['attribs'] = $attribs.' onchange="this.form.submit()"';

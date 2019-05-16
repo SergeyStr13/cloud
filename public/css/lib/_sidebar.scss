@@ -1,0 +1,43 @@
+@import '../config';
+
+.sidebar {
+
+	background-color: $sidebar-bg-cl;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: block;
+		}
+	}
+
+	ul li a {
+		display: block;
+		padding: 0 10px;
+		text-decoration: none;
+		color: $sidebar-menuitem-text-cl;
+		line-height: 38px;
+		font-size: 0.9rem;
+		// background-color: $sidebar-menuitem-bg-cl;
+
+		.mdi {
+			font-size: 1.3rem;
+			margin-right: 10px;
+			vertical-align: middle;
+			color: $sidebar-menuitem-icon-cl;
+		}
+
+		&:hover, &:focus, &.active {
+			background-color: $sidebar-menuitem-active-bg-cl;
+			color: $sidebar-menuitem-active-text-cl;
+
+			.mdi {
+				color: $sidebar-menuitem-active-icon-cl;
+			}
+		}
+	}
+
+}

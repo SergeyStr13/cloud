@@ -1,9 +1,10 @@
 <?php
 namespace App;
 
+use App\Models\User;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Events\Dispatcher;
-use Pandora3\Core\Application\Application;
+use Pandora3\Libs\Application\Application;
 use Pandora3\Core\Container\Container;
 use Pandora3\Core\Http\Response;
 use Pandora3\Core\Interfaces\DatabaseConnectionInterface;
@@ -33,6 +34,9 @@ class App extends Application {
 		}
 	}
 
+	protected function getUserModel(): string {
+		return User::class;
+	}
 
 	/**
 	 * @param Container $container
@@ -42,6 +46,10 @@ class App extends Application {
 
 		$container->setShared(DatabaseConnectionInterface::class, EloquentConnection::class);
 		$container->setShared(UserProviderInterface::class, EloquentUserProvider::class);
+
+		$container->set(EloquentUserProvider::class, function() {
+			return new EloquentUserProvider($this->getUserModel());
+		});
 
 		if ($this->config->has('database')) {
 			$connection = new EloquentConnection( array_replace(

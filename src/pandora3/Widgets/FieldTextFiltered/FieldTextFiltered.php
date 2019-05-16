@@ -23,6 +23,7 @@ class FieldTextFiltered extends FieldText {
 	}
 
 	protected function beforeRender(array $context): array {
+		$context = parent::beforeRender($context);
 		if ($context['allowedChars'] ?? null) {
 			$attribs = $context['attribs'] ?? '';
 			$context['attribs'] = $attribs.' onkeypress="filterKey(event, \''.$context['allowedChars'].'\')"';

@@ -20,9 +20,13 @@ $disabled = $disabled ?? false;
 		}
 		$optionParams = (object) $optionParams;
 		$optionAttribs = $optionParams->attribs ?? '';
+		$optionDisabled = ($optionParams->disabled ?? false) || $disabled;
+		if ($optionDisabled) {
+			$optionAttribs .= ' disabled';
+		}
 		$isChecked = ($value === $optionValue) || ($value === ''.$optionValue);
 		?><label><?php
-			?><div class="radio-wrap"><?php
+			?><div class="radio-wrap <?= $optionDisabled ? 'disabled' : '' ?>"><?php
 				?><input class="radio" type="radio" name="<?= $name ?>" value="<?= $optionValue ?>" <?= ($isChecked) ? 'checked' : '' ?> <?= $optionAttribs ?>><?php
 				?><i class="radio-icon"></i><?php
 				?><span class="radio-label"><?= htmlentities($optionParams->title) ?></span><?php

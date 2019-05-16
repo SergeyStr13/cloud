@@ -1,0 +1,29 @@
+.debug-output {
+  position: absolute;
+  border-top: 20px solid #41526f;
+  width: 100%;
+  background: #35435a;
+  padding: 0 15px 15px;
+  box-sizing: border-box;
+  font-size: 0.8rem;
+  color: #b4ddff;
+  top: 100%; }
+
+.debug-row {
+  margin: 10px 0; }
+  .debug-row .channel-label {
+    font-weight: bold; }
+  .debug-row .label {
+    color: #67B3EC; }
+  .debug-row.channel-console .channel-label {
+    color: #1EFF68; }
+  .debug-row.channel-sql .channel-label {
+    color: #FFC41E; }
+  .debug-row pre {
+    margin: 0;
+    display: inline;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace; }
+
+.debug-output {
+  left: 0; }

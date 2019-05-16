@@ -10,6 +10,7 @@ class FieldTextarea extends FormField {
 	}
 
 	protected function beforeRender(array $context): array {
+		$context = parent::beforeRender($context);
 		$attribs = $context['attribs'] ?? '';
 		if ($context['placeholder'] ?? '') {
 			$attribs .= ' placeholder="'.$context['placeholder'].'"';

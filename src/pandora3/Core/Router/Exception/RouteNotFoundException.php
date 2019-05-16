@@ -3,7 +3,7 @@ namespace Pandora3\Core\Router\Exception;
 
 use LogicException;
 use Throwable;
-use Pandora3\Core\Application\Exception\ApplicationException;
+use Pandora3\Core\Interfaces\Exception\ApplicationException;
 
 /**
  * Class RouteNotFoundException
@@ -15,7 +15,7 @@ class RouteNotFoundException extends LogicException implements ApplicationExcept
 	 * @param string $requestUri
 	 * @param Throwable|null $previous
 	 */
-	public function __construct(string $requestUri, Throwable $previous = null) {
+	public function __construct(string $requestUri, ?Throwable $previous = null) {
 		$message = "No matched route for uri '$requestUri'";
 		parent::__construct($message, E_USER_WARNING, $previous);
 	}

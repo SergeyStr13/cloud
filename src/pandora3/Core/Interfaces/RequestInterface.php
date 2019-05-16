@@ -30,7 +30,7 @@ interface RequestInterface {
 	 * @param string|null $method
 	 * @return array
 	 */
-	function all($method): array;
+	function all(?string $method): array;
 	
 	/**
 	 * @param string $param

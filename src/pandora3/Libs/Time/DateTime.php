@@ -176,7 +176,7 @@ class DateTime extends \DateTimeImmutable {
 	} */
 
 	/**
-	 * @param string|static $date
+	 * @param string|DateTimeInterface|null $date
 	 * @param string $format
 	 * @return string
 	 */

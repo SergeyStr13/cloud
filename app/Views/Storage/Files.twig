@@ -1,0 +1,21 @@
+{% extends layout %}
+
+{% set pageTitle = 'Хранилище' %}
+
+{% block content %}
+	<div class="container">
+		<section class="section">
+			<h1>{{ pageTitle }}</h1>
+			<div class="table-toolbar align-right">
+				<a class="button button-small button-secondary" href="/storage/directory/add"><i class="mdi mdi-plus"></i>Добавить каталог</a>
+				<a class="button button-small button-secondary" href="/storage/files/add"><i class="mdi mdi-plus"></i>Добавить файл</a>
+			</div>
+			{# #}
+			{% for item in items %}
+				<div class="">
+					<a href="{{ item.link }}"> {{ item.title }} </a>
+				</div>
+			{% endfor %}
+		</section>
+	</div>
+{% endblock %}

@@ -49,12 +49,12 @@ class FieldRadio extends FormField {
 		]);
 	}
 	
-	protected function beforeRender(array $context): array {
-		if ($context['disabled'] ?? false) {
+	// protected function beforeRender(array $context): array {
+		/* if ($context['disabled'] ?? false) {
 			$attribs = $context['attribs'] ?? '';
 			$context['attribs'] = $attribs.' disabled';
-		}
-		return $context;
-	}
+		} */
+		// return $context;
+	// }
 	
 }

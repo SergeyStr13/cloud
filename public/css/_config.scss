@@ -1,0 +1,117 @@
+
+
+$font: "Open sans", sans-serif;
+
+$body-bg-cl: #e3f1fb; // #e3f0f9; // #ecf5fc; // #eef6fc;
+$body-text-cl: #576f7e;
+
+$heading-cl: #5a82a2;
+
+$header-bg-cl: #487599;
+$header-text-cl: white;
+
+
+$sidebar-bg-cl: white;
+$sidebar-border-cl: #CEE1EA; // #D4E7F0; // #E1E9F2;
+
+$sidebar-menuitem-bg-cl: white;
+$sidebar-menuitem-text-cl: #47565f;
+$sidebar-menuitem-icon-cl: #477ba5;
+
+$sidebar-menuitem-active-bg-cl: #5787AD;
+$sidebar-menuitem-active-text-cl: white;
+$sidebar-menuitem-active-icon-cl: white;
+
+
+$sub-menu-border-cl: #CBE8F6;
+$sub-menu-item-cl: #6b94b9;
+$sub-menu-item-selected-cl: #299FF5; // #2CA0F5; // #01B65B;
+$sub-menu-item-selected-border: #71B4FF; // #6BBBFF; // #21D17A;
+
+$button-bg-cl: white;
+$button-text-cl: #7e9db3;
+$button-border-cl: #BED1E0;
+
+$button-active-bg-cl: white;
+$button-active-text-cl: #4286bf; // #608baa;
+$button-active-border-cl: #9cc5e7; // #A0BED5;
+$button-active-shadow-cl: rgba(156, 197, 231, 0.6);
+
+
+
+
+$button-primary-bg-cl: #2CB16F; // #5C90BA
+$button-primary-text-cl: white;
+$button-primary-border-cl: $button-primary-bg-cl;
+
+$button-primary-active-bg-cl: #2CBD75; // #5F97C5;
+$button-primary-active-text-cl: white;
+$button-primary-active-border-cl: #20A864;
+
+
+$button-secondary-bg-cl: #5C90BA;
+$button-secondary-text-cl: white;
+$button-secondary-border-cl: $button-secondary-bg-cl;
+
+$button-secondary-active-bg-cl: #5F97C5;
+$button-secondary-active-text-cl: white;
+$button-secondary-active-border-cl: #4E88B7;
+
+
+$checkbox-bg-cl: white;
+$checkbox-border-cl: #BED3E4;
+
+$checkbox-focus-bg-cl: white;
+$checkbox-focus-border-cl: #84b3da;
+
+$checkbox-checked-bg-cl: #5c90ba;
+$checkbox-checked-border-cl: $checkbox-checked-bg-cl;
+$checkbox-checked-icon-cl: white;
+
+
+$tool-button-bg-cl: white;
+$tool-button-text-cl: #6b97ba;
+
+$tool-button-active-bg-cl: #5C90BA;
+$tool-button-active-text-cl: white;
+
+
+$field-bg-cl: white;
+$field-border-cl: #bdd5e6; // #c6d9e7;
+$field-text-cl: #517695;
+
+$field-label-cl: #4d7595;
+
+$field-focus-bg-cl: $field-bg-cl;
+$field-focus-border-cl: #9cc5e7;
+$field-focus-text-cl: #4286bf;
+$field-focus-shadow-cl: rgba(156, 197, 231, 0.6);
+
+
+$table-bg-cl: white;
+$table-text-cl: #576f7e;
+$table-border-cl: #DBE6EF;
+
+$table-border-top-cl: #87b5da;
+
+$table-head-bg-cl: #5787ad;
+$table-head-text-cl: white;
+
+
+$message-shadow: rgba(0, 58, 101, 0.1);
+
+$message-info-border: #4d9bff;
+$message-info-icon-color: #4d9bff;
+
+$message-success-border: #27a448;
+$message-success-icon-color: #27a448;
+
+$message-danger-border: #ff89a3;
+$message-danger-icon-color: #fc6d8c;
+
+$message-warning-border: #ff9d3c;
+$message-warning-icon-color: #ff9d3c;
+
+
+$cl-green: #00ba0f;
+$cl-light-blue: #6b97ba;

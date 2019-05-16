@@ -1,0 +1,128 @@
+@import '../config';
+
+.table {
+	background-color: $table-bg-cl;
+	color: $table-text-cl;
+	font-size: 0.9rem;
+	box-shadow: 0 1px 4px rgba(0, 58, 101, 0.2);
+
+	&.border-top {
+		border-top: 3px solid $table-border-top-cl;
+	}
+
+	tr:last-child td {
+		border-bottom: 0;
+	}
+	td {
+		padding: 5px 10px;
+		line-height: 24px;
+		border-bottom: 2px solid $table-border-cl;
+	}
+
+	th {
+		padding: 5px 10px;
+		line-height: 24px;
+		text-align: left;
+		background-color: $table-head-bg-cl;
+		color: $table-head-text-cl;
+		font-size: 0.95rem;
+	}
+
+	th .field .checkbox-wrap {
+		.checkbox-label {
+			color: inherit;
+			font-size: inherit;
+		}
+
+		.checkbox:checked ~ .checkbox-icon {
+			background-color: #5c90ba;
+			border-color: #5c90ba;
+			box-shadow: 0 0 0 2px #8AB3D4;
+		}
+
+		.checkbox:focus ~ .checkbox-icon {
+			// box-shadow: 0 0 0 2px #A6CBE9;
+			box-shadow: 0 0 0px 1px #A1CAEC;
+		}
+
+		.checkbox:checked:focus ~ .checkbox-icon {
+			box-shadow: 0 0 0 2px #A6CBE9;
+		}
+	}
+
+	.row-checkbox {
+		padding: 2px;
+		line-height: inherit;
+
+		label {
+			cursor: pointer;
+			padding: 6px;
+			display: inline-block;
+			height: 18px;
+			/* .checkbox-icon {
+				vertical-align: top;
+			} */
+		}
+
+		/* input {
+			margin: 0 10px;
+			vertical-align: middle;
+		} */
+	}
+
+	.row-border-top-blue td {
+		border-top: 3px solid #9DCAED;
+	}
+
+	.tools {
+		padding: 2px;
+
+		.tool-button, .tool-space {
+			margin-right: 2px;
+		}
+	}
+}
+
+.table .field {
+	margin-bottom: 0;
+	label {
+		padding: 2px 8px;
+		display: block;
+		cursor: pointer;
+	}
+}
+
+.no-padding.no-padding {
+	padding: 0;
+}
+
+.table-toolbar {
+	padding-bottom: 15px;
+
+	&.align-right {
+		text-align: right;
+	}
+}
+
+.toolbar-form {
+	margin-bottom: 5px;
+
+	.button {
+		margin-top: 23px;
+	}
+}
+
+.table-icon {
+	font-size: 1.3rem;
+	vertical-align: top;
+
+	&.mdi {
+		transform: rotate(0.1deg); // fix resizing artifacts
+	}
+}
+
+.table .table-message {
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}

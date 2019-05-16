@@ -1,6 +1,7 @@
 <?php
-namespace Pandora3\Core\Application;
+namespace Pandora3\Libs\Application;
 
+use Pandora3\Core\Application\BaseApplication;
 use Pandora3\Core\Container\Container;
 use Pandora3\Core\Interfaces\DatabaseConnectionInterface;
 use Pandora3\Core\Interfaces\SessionInterface;

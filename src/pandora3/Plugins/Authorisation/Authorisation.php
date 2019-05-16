@@ -44,7 +44,7 @@ class Authorisation {
 	 * @param string $password
 	 * @return AuthorisableInterface|null
 	 */
-	public function getByCredentials(string $login, string $password) {
+	public function getByCredentials(string $login, string $password): ?AuthorisableInterface {
 		$user = $this->userProvider->getUserByLogin($login);
 		if ($user && $user->checkPassword($password)) {
 			return $user;
@@ -58,7 +58,7 @@ class Authorisation {
 	 * @return AuthorisableInterface|null
 	 * @throws AuthorisationFailedException
 	 */
-	public function authoriseByCredentials(string $login, string $password) {
+	public function authoriseByCredentials(string $login, string $password): ?AuthorisableInterface {
 		$user = $this->getByCredentials($login, $password);
 		if (!$user) {
 			throw new AuthorisationFailedException('Неверный логин или пароль'); // Wrong login or password
@@ -70,8 +70,8 @@ class Authorisation {
 	/**
 	 * @return AuthorisableInterface|null
 	 */
-	public function getUser() {
-		if ($this->userProvider && $this->userId === null) {
+	public function getUser(): ?AuthorisableInterface {
+		if ($this->userProvider && is_null($this->userId)) {
 			$this->userId = $this->session->get('userId') ?? 0;
 			if ($this->userId) {
 				$this->user = $this->userProvider->getUserById($this->userId) ?? $this->userProvider->getGuestUser();

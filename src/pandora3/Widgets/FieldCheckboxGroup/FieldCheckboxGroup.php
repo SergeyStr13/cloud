@@ -71,6 +71,7 @@ class FieldCheckboxGroup extends FormField {
 	}
 	
 	protected function beforeRender(array $context): array {
+		$context = parent::beforeRender($context);
 		if ($context['disabled'] ?? false) {
 			$attribs = $context['attribs'] ?? '';
 			$context['attribs'] = $attribs.' disabled';

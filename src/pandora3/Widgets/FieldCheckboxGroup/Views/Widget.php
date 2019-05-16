@@ -20,9 +20,13 @@ $disabled = $disabled ?? false;
 		}
 		$optionParams = (object) $optionParams;
 		$optionAttribs = $optionParams->attribs ?? '';
+		$optionDisabled = $optionParams->disabled ?? false;
+		if ($optionDisabled) {
+			$optionAttribs .= ' disabled';
+		}
 		$isChecked = in_array(''.$optionValue,$value);
 		?><label><?php
-			?><div class="checkbox-wrap"><?php
+			?><div class="checkbox-wrap <?= $optionDisabled ? 'disabled' : '' ?>"><?php
 				?><input class="checkbox" type="checkbox" name="<?= $name ?>[<?= $optionValue ?>]" value="1" <?= ($isChecked) ? 'checked' : '' ?> <?= $optionAttribs ?>><?php
 				?><i class="checkbox-icon"></i><?php
 				?><span class="checkbox-label"><?= htmlentities($optionParams->title) ?></span><?php

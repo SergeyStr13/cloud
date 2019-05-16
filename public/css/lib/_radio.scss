@@ -1,0 +1,51 @@
+@import '../config';
+
+.radio {
+	opacity: 0;
+	margin: 0;
+	position: absolute;
+	pointer-events: none;
+
+	~ .radio-icon {
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		border: 2px solid $checkbox-border-cl;
+		border-radius: 50%;
+		background-color: $checkbox-bg-cl;
+		box-sizing: border-box;
+
+		&:before {
+			content: " ";
+			pointer-events: none;
+			display: inline-block;
+			background-color: $checkbox-checked-bg-cl;
+			width: 8px;
+			height: 8px;
+			margin-top: 3px;
+			margin-left: 3px;
+			vertical-align: top;
+			border-radius: 50%;
+			opacity: 0;
+		}
+	}
+
+	&:focus ~ .radio-icon {
+		box-shadow: 0 0 0 2px rgba(156, 197, 231, 0.5);
+		background-color: $checkbox-focus-bg-cl;
+		border-color: $checkbox-focus-border-cl;
+	}
+
+	&:checked ~ .radio-icon {
+		background-color: rgba(0, 0, 0, 0); // $checkbox-checked-bg-cl;
+		border-color: $checkbox-checked-border-cl;
+		&:before {
+			opacity: 1;
+		}
+	}
+
+	&:disabled ~ .radio-icon {
+		opacity: 0.6;
+	}
+
+}

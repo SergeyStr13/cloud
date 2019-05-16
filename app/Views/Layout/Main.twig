@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<link rel="stylesheet" href="/css/font/materialdesignicons.min.css">
+        <link rel="stylesheet" href="/css/font/open-sans.css">
+		<link rel="stylesheet" href="/css/main.css">
+		{% if hasDebug %}
+			<link rel="stylesheet" href="/css/debug.css">
+		{% endif %}
+		<title>{{ pageTitle|default('Файловое хранилище') }}</title>
+		{% block styles %}{% endblock %}
+	</head>
+	<body>
+		{# @var menu \App\Widgets\Menu\Menu #}
+		<div class="page">
+			<header>
+				<div class="header-right">
+					{% if user %}
+						<div class="header-item user-login"><i class="mdi mdi-account"></i>{{ user.login }}</div><!--
+						--><a href="/auth/sign-out" class="header-item"><i class="mdi mdi-logout-variant"></i>Выйти</a>
+					{% else %}
+						<a href="/auth" class="header-item"><i class="mdi mdi-login-variant"></i>Войти</a>
+					{% endif %}
+				</div>
+			</header>
+			<aside class="sidebar">
+				{% render menu.render() %}
+			</aside>
+			<main>
+				{# <hello-world id="hello-world" msg="Test message"></hello-world> #}
+				{% block content %}{% endblock %}
+			</main>
+			<footer>
+			</footer>
+			{% render hasDebug ? debugOutput() %}
+			{% render assets() %}
+			{# <script src="/js/scripts.js"></script> #}
+
+			{% block scripts %}{% endblock %}
+		</div>
+	</body>
+</html>

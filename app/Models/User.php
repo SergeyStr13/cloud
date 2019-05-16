@@ -3,13 +3,14 @@ namespace App\Models;
 
 use App\Models\Enum\Group;
 use Illuminate\Database\Eloquent\Model;
-use Pandora3\Core\Application\Application;
+use Pandora3\Libs\Application\Application;
 use Pandora3\Plugins\Authorisation\AuthorisableInterface;
 
 /**
  * @property int $id
  * @property string $login
  * @property string $password
+ * @property string $email
  * @property string $createTime
  * @property string $updateTime
  * @property int $group

@@ -16,9 +16,14 @@ class FieldText extends FormField {
 	}
 
 	protected function beforeRender(array $context): array {
+		$context = parent::beforeRender($context);
 		if ($context['placeholder'] ?? '') {
 			$attribs = $context['attribs'] ?? '';
 			$context['attribs'] = $attribs.' placeholder="'.$context['placeholder'].'"';
+		}
+		if ($context['disabled'] ?? false) {
+			$attribs = $context['attribs'] ?? '';
+			$context['attribs'] = $attribs.' disabled';
 		}
 		return $context;
 	}

@@ -1,5 +1,5 @@
 <?php
-namespace Pandora3\Core\Application\Exception;
+namespace Pandora3\Core\Interfaces\Exception;
 
 /**
  * Interface CoreException

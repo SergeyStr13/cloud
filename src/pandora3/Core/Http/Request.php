@@ -89,7 +89,7 @@ class Request implements RequestInterface {
 	 * @param string|null $method
 	 * @return array
 	 */
-	public function all($method = null): array {
+	public function all(?string $method = null): array {
 		switch ($method) {
 			case 'get':
 				return $_GET;
@@ -128,7 +128,7 @@ class Request implements RequestInterface {
 	 * @return array
 	 */
 	public function getFiles(): array {
-		if ($this->files === null) {
+		if (is_null($this->files)) {
 			$this->files = $_FILES; // todo: normalize files
 		}
 		return $this->files;

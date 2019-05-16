@@ -21,7 +21,7 @@ class EloquentConnection implements DatabaseConnectionInterface {
 	 * @return EloquentManager
 	 */
 	/* protected function getManager(): EloquentManager {
-		if (self::$eloquent === null) {
+		if (is_null(self::$eloquent)) {
 			self::$eloquent = new EloquentManager();
 		}
 		return self::$eloquent;

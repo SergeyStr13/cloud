@@ -1,0 +1,61 @@
+@import '../config';
+
+.form-messages {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	max-width: 350px;
+
+	.message {
+		margin: 10px 0 15px;
+	}
+}
+
+.message {
+	background: #FFF;
+	padding: 10px 10px 12px 8px;
+	color: #e7417b;
+	font-size: 0.95rem;
+	box-shadow: 0 1px 4px $message-shadow;
+	border-left: 3px solid $message-info-border;
+
+	/* .mdi {
+		color: $message-info-icon-color;
+		font-size: 1.3rem;
+		line-height: 18px;
+		margin-left: -1px;
+		float: left;
+	} */
+
+	span {
+    	display: block;
+    	padding-left: 5px; // 26px;
+	}
+
+	/* &.message-info {
+		border-color: $message-info-border;
+		.mdi {
+			color: $message-info-icon-color;
+		}
+	} */
+
+	&.message-success {
+		border-color: $message-success-border;
+		.mdi {
+			color: $message-success-icon-color;
+		}
+	}
+
+	&.message-danger {
+		border-color: $message-danger-border;
+		.mdi {
+			color: $message-danger-icon-color;
+		}
+	}
+
+	&.message-warning {
+		border-color: $message-warning-border;
+		.mdi {
+			color: $message-warning-icon-color;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+
+.debug-output {
+	position: absolute;
+	border-top: 20px solid #41526f; // #38576f;
+	// border-top: 20px solid #b2d3ec;
+	width: 100%;
+	background: #35435a; // #2c4559;
+	// background: white;
+	padding: 0 15px 15px;
+	box-sizing: border-box;
+	font-size: 0.8rem;
+	color: #b4ddff; // #C1E0FF;
+	// color: #3e5c6f;
+	top: 100%;
+}
+
+.debug-row {
+	margin: 10px 0;
+
+	.channel-label {
+		font-weight: bold;
+	}
+
+	.label {
+		color: #67B3EC;
+	}
+
+	&.channel-console .channel-label {
+		color: #1EFF68;
+		// color: #009DFF;
+	}
+
+	&.channel-sql .channel-label {
+		color: #FFC41E;
+		// color: #009DFF;
+	}
+
+	pre {
+		// white-space: normal;
+		margin: 0;
+		display: inline;
+		white-space: pre-wrap;
+		font-family: Consolas, monospace;
+	}
+}

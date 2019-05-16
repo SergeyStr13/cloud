@@ -33,7 +33,7 @@ class EloquentUserProvider implements UserProviderInterface {
 	 * @param mixed $id
 	 * @return AuthorisableInterface|null
 	 */
-	public function getUserById($id) {
+	public function getUserById($id): ?AuthorisableInterface {
 		/** @var Model $userModel */
 		$userModel = $this->userModel;
 
@@ -46,7 +46,7 @@ class EloquentUserProvider implements UserProviderInterface {
 	 * @param string $login
 	 * @return AuthorisableInterface|null
 	 */
-	public function getUserByLogin(string $login) {
+	public function getUserByLogin(string $login): ?AuthorisableInterface {
 		/** @var Model $userModel */
 		$userModel = $this->userModel;
 

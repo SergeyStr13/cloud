@@ -1,0 +1,146 @@
+@import '../config';
+
+.button {
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+
+	font-size: 0.95rem;
+	line-height: 38px;
+    height: 42px;
+	padding-left: 15px;
+    padding-right: 15px;
+    min-width: 162px;
+	box-sizing: border-box;
+
+	border: 2px solid $button-border-cl;
+	border-radius: 4px;
+	background-color: $button-bg-cl;
+	color: $button-text-cl;
+	// box-shadow: 0 1px 2px rgba(0,73,132,0.1);
+
+	&:hover, &:focus, &:active {
+		// box-shadow: 0 0 3px rgba(0,73,132,0.4);
+		box-shadow: 0 0 3px $button-active-shadow-cl; // rgba(0, 73, 132, 0.2);
+		background-color: $button-active-bg-cl;
+		color: $button-active-text-cl;
+		border-color: $button-active-border-cl;
+	}
+
+	&:active {
+		position: relative;
+		top: 1px;
+	}
+}
+
+.button.disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.button.button-small {
+	font-size: 0.9rem;
+	line-height: 30px;
+    height: 34px;
+	padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
+
+    .mdi {
+    	font-size: 1.2rem;
+	}
+}
+
+.button .mdi {
+	margin-right: 5px;
+	font-size: 1.2rem;
+	vertical-align: top;
+	margin-left: -5px;
+}
+
+.mdi.fix-icon {
+	transform: rotate(0.1deg); // fix resize artifacts
+}
+
+.button .mdi-plus {
+	font-size: 1.3rem;
+}
+
+.tool-button {
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+
+	font-size: 1.1rem;
+	line-height: 30px;
+    height: 30px;
+    width: 30px;
+	// box-sizing: border-box;
+	margin-right: 6px;
+	vertical-align: top;
+
+	border-radius: 3px;
+	background-color: $tool-button-bg-cl;
+	color: $tool-button-text-cl;
+
+	.mdi {
+		transform: rotate(0.1deg); // fix resizing artifacts
+	}
+
+	.mdi-close {
+		font-size: 1.2rem;
+	}
+
+	&:hover, &:focus, &:active {
+		box-shadow: 0 1px 2px rgba(0,73,132,0.1);
+		background-color: $tool-button-active-bg-cl;
+		color: $tool-button-active-text-cl;
+	}
+
+	&.delete {
+		&:hover, &:focus, &:active {
+			background-color: #EA6F8A;
+		}
+	}
+
+	&.accept {
+		&:hover, &:focus, &:active {
+			background-color: $button-primary-bg-cl;
+		}
+	}
+
+	&.tool-button.tool-button:last-child {
+		margin-right: 0;
+	}
+}
+
+.tool-space {
+	display: inline-block;
+	width: 30px;
+}
+
+.button-primary {
+	background-color: $button-primary-bg-cl;
+	color: $button-primary-text-cl;
+	border-color: $button-primary-border-cl;
+
+	&:hover, &:focus, &:active {
+		box-shadow: 0 1px 2px rgba(0,73,132,0.1);
+		background-color: $button-primary-active-bg-cl;
+		color: $button-primary-active-text-cl;
+		border-color: $button-primary-active-border-cl;
+	}
+}
+
+.button-secondary {
+	background-color: $button-secondary-bg-cl;
+	color: $button-secondary-text-cl;
+	border-color: $button-secondary-border-cl;
+
+	&:hover, &:focus, &:active {
+		box-shadow: 0 1px 2px rgba(0,73,132,0.1);
+		background-color: $button-secondary-active-bg-cl;
+		color: $button-secondary-active-text-cl;
+		border-color: $button-secondary-active-border-cl;
+	}
+}

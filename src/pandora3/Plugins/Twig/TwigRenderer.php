@@ -1,12 +1,13 @@
 <?php
 namespace Pandora3\Plugins\Twig;
 
+use Pandora3\Core\Interfaces\RendererInterface;
 use Twig\Environment;
 use Twig\Extension\ExtensionInterface;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 
-class TwigRenderer {
+class TwigRenderer implements RendererInterface {
 	
 	/** @var Environment $twig */
 	protected $twig;
@@ -44,12 +45,15 @@ class TwigRenderer {
 	 * @param string $viewPath
 	 * @param array $context
 	 * @return string
-	 * @throws \Twig\Error\LoaderError
-	 * @throws \Twig\Error\RuntimeError
-	 * @throws \Twig\Error\SyntaxError
+	 * @throws \RuntimeException
 	 */
 	public function render(string $viewPath, array $context = []): string {
-		return $this->twig->render($viewPath, $context);
+		$viewPath = preg_replace('#(\.twig)?$#', '.twig', $viewPath, 1);
+		try {
+			return $this->twig->render($viewPath, $context);
+		} catch (\Throwable $ex) {
+			throw new \RuntimeException("Rendering view '$viewPath' failed", E_WARNING, $ex);
+		}
 	}
 	
 }

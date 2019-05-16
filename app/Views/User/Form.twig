@@ -1,0 +1,32 @@
+{% extends layout %}
+
+{% set pageTitle = form.isUpdate ? 'Редактирование пользователя' : 'Добавление пользователя' %}
+
+{% block content %}
+	<div class="container">
+		<section class="section">
+			<h1>{{ pageTitle }}</h1>
+			<div class="width-7">
+				{% autoescape false %}
+					{{ form.messages }}
+					{{ form.begin({id: 'user-form'}) }}
+						<div style="overflow: hidden; height: 0">
+							<input type="password" name="fakePassword" tabindex="-1">
+						</div>
+						{{ form.field('login') }}
+						{{ form.field('password') }}
+						{{ form.field('passwordConfirm') }}
+						{{ form.field('email') }}
+						{{ form.field('group', {options: options.groups}) }}
+						{% spaceless %}
+							<div class="form-toolbar">
+								{{ form.button('save') }}
+								{{ form.button('cancel', {href: uriCancel}) }}
+							</div>
+						{% endspaceless %}
+					{{ form.end }}
+				{% endautoescape %}
+			</div>
+		</section>
+	</div>
+{% endblock %}

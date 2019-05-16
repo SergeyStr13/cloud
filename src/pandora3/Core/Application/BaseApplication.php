@@ -109,7 +109,7 @@ abstract class BaseApplication implements ApplicationInterface {
 	 */
 	public function __get(string $property) {
 		if (array_key_exists($property, $this->properties)) {
-			// todo: try catch ContainerException log property is null
+			// todo: maybe try catch ContainerException & log property is null
 //			echo '<pre>';
 //			var_dump($this->container);
 //			echo '</pre>';
@@ -153,13 +153,8 @@ abstract class BaseApplication implements ApplicationInterface {
 	 * @return string
 	 */
 	protected function getPath(): string {
-		// try {
-		$reflection = new \ReflectionClass(get_class($this));
+		$reflection = new \ReflectionClass(static::class);
 		return dirname($reflection->getFileName());
-		/* } catch (\ReflectionException $ex) { // will never occur
-			Debug::logException($ex);
-			return '';
-		} */
 	}
 
 	/**
@@ -200,6 +195,7 @@ abstract class BaseApplication implements ApplicationInterface {
 
 		$handler = $this->router->dispatch($this->request->uri, $arguments);
 		$response = $handler->handle($this->request, $arguments);
+		// todo: catch exception
 		$response->send();
 	}
 

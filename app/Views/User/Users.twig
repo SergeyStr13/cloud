@@ -1,0 +1,43 @@
+{# @var users \App\Models\Users\User[] #}
+{% extends layout %}
+
+{% set pageTitle = 'Пользователи' %}
+
+{% block content %}
+	<div class="container">
+		<section class="section">
+			<h1>{{ pageTitle }}</h1>
+			<div style="display: inline-block; position: relative; top: -42px;">
+				<div class="table-toolbar align-right">
+					<a class="button button-small button-secondary" href="/users/add"><i class="mdi mdi-plus"></i>Добавить</a>
+				</div>
+				<table class="table">
+					<tr>
+						<th style="width: 300px">Имя</th>
+						<th style="width: 300px">Группа</th>
+						<th colspan="2"></th>
+					</tr>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.login }}</td>
+							<td>{{ user.groupTitle }}</td>
+							<td class="row-checkbox">
+								<label>
+									<input type="checkbox" class="checkbox" name="usersId[{{ user.id }}]"><i class="checkbox-icon"></i>
+								</label>
+							</td>
+							{% spaceless %}
+								<td class="tools">
+									<a href="/users/update?id={{ user.id }}" title="Редактировать" class="tool-button"><i class="mdi mdi-pencil"></i></a>
+									<a href="/users/delete?id={{ user.id }}" title="Удалить" class="tool-button delete"><i class="mdi mdi-close"></i></a>
+								</td>
+							{% endspaceless %}
+						</tr>
+					{% else %}
+						<tr><td colspan="4">Нет ни одного пользователя</td></tr>
+					{% endfor %}
+				</table>
+			</div>
+		</section>
+	</div>
+{% endblock %}

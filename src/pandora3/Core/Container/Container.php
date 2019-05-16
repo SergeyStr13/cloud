@@ -93,7 +93,7 @@ class Container {
 			}
 			/** @var ReflectionParameter $dependency */
 			$class = $dependency->getClass();
-			$result[] = ($class !== null)
+			$result[] = (!is_null($class))
 				? $this->resolve($class->name)
 				: $this->resolvePrimitive($dependency, $className);
 		}
@@ -122,7 +122,7 @@ class Container {
 		}
 
 		$constructor = $reflection->getConstructor();
-		if ($constructor === null) {
+		if (is_null($constructor)) {
 			return new $class();
 		}
 

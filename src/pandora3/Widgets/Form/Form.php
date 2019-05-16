@@ -1,7 +1,7 @@
 <?php
 namespace Pandora3\Widgets\Form;
 
-use Pandora3\Core\Application\Application;
+use Pandora3\Libs\Application\Application; // todo: think if can get rid of
 use Pandora3\Core\Interfaces\RequestInterface;
 use Pandora3\Widgets\FieldCheckbox\FieldCheckbox;
 use Pandora3\Widgets\FieldCheckboxGroup\FieldCheckboxGroup;
@@ -13,18 +13,20 @@ use Pandora3\Widgets\FieldText\FieldText;
 use Pandora3\Widgets\FieldTextarea\FieldTextarea;
 use Pandora3\Widgets\FieldTextFiltered\FieldTextFiltered;
 use Pandora3\Widgets\FormField\FormField;
-use Pandora3\Core\Widget\Exception\WidgetRenderException;
+use Pandora3\Libs\Widget\Exception\WidgetRenderException;
 use Pandora3\Widgets\ValidationForm\Exceptions\UnregisteredSanitizerException;
 use Pandora3\Widgets\Form\Sanitizers\{SanitizerDate,SanitizerInteger,SanitizerBoolean,SanitizerLowercase};
 
 /**
- * @property-read string $action
  * @property-read string $message
  * @property-read bool $isUpdate
  * @property-read array $values
  * @property-read object|null $model
  */
 abstract class Form {
+
+	/** @var string $action */
+	public $action;
 
 	/** @var RequestInterface $request */
 	protected $request;
@@ -43,9 +45,6 @@ abstract class Form {
 
 	/** @var string $message */
 	protected $message = '';
-
-	/** @var string $action */
-	protected $action;
 
 	/** @var object|null $model */
 	protected $model;
@@ -101,7 +100,7 @@ abstract class Form {
 	 * @param object|null $model
 	 * @param string|null $action
 	 */
-	public function __construct(RequestInterface $request, $model = null, $action = null) {
+	public function __construct(RequestInterface $request, $model = null, ?string $action = null) {
 		$this->request = $request;
 		$this->action = $action ?? $request->uri;
 		if (is_array($model)) {
@@ -111,7 +110,7 @@ abstract class Form {
 		$this->initFields($this->getFields());
 		$this->initButtons($this->getButtons());
 		$app = Application::getInstance();
-		if ($this->baseUri === null) {
+		if (is_null($this->baseUri)) {
 			$this->baseUri = preg_replace('#/$#', '', $app->baseUri);
 		}
 		if ($this->autoLoad) {
@@ -121,7 +120,7 @@ abstract class Form {
 
 	/**
 	 * @param object $model
- 	 * @return object
+ 	 * @return object|array
  	 */
 	protected function setModel($model) {
 		return $model;
@@ -175,7 +174,7 @@ abstract class Form {
 			$field = $className::create($name, $value, $params);
 			$this->fields[$name] = $field;
 			if ($this->model && property_exists($this->model, $name)) {
-				$this->model->$name = $field->value;
+				$this->model->$name = $field->value; // todo: think
 			}
 			if ($ignoreRequest) {
 				$this->requestExcludeFields[$name] = true;
@@ -200,7 +199,6 @@ abstract class Form {
 	 */
 	public function __get(string $property) {
 		$methods = [
-			'action' => 'getAction',
 			'isUpdate' => 'isUpdate',
 			'values' => 'getValues',
 			'model' => 'getModel',
@@ -250,16 +248,22 @@ abstract class Form {
 		$this->values[$name] = $value;
 	}
 
-	public function getValues(): array {
-		return $this->values;
+	/**
+	 * @param array $values
+ 	 */
+	public function setValues(array $values): void {
+		foreach ($values as $name => $value) {
+			$this->set($name, $value);
+		}
 	}
 
-	/* *
-	 * @return array
-	 */
-	/* public function getValues(): array {
-		return $this->model ? (array) $this->model : [];
-	} */
+	public function getValues(): array {
+		$values = $this->values;
+		if ($this->model) {
+			$values = array_replace((array) $this->model, $values);
+		}
+		return $values;
+	}
 
 	protected function loadFromRequest(RequestInterface $request): array {
 		return $request->all($this->method);
@@ -272,7 +276,6 @@ abstract class Form {
 		);
 		$values = $this->sanitize($values);
 		$this->isLoaded = true;
-		// $field->context['useRequest']
 		return $this->values = $this->afterLoad($values);
 	}
 
@@ -286,7 +289,7 @@ abstract class Form {
 				$fieldSanitizers = [$fieldSanitizers];
 			}
 			$value = $values[$field] ?? null;
-			if ($value !== null) {
+			if (!is_null($value)) {
 				foreach ($fieldSanitizers as $key => $sanitizer) {
 					$arguments = [];
 					if (!is_numeric($key)) {
@@ -313,17 +316,10 @@ abstract class Form {
 	}
 
 	/**
-	 * @return string
-	 */
-	public function getAction(): string {
-		return $this->action;
-	}
-
-	/**
 	 * @return bool
 	 */
 	public function isUpdate(): bool {
-		return $this->model !== null;
+		return !is_null($this->model);
 	}
 
 	/**

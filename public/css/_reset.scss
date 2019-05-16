@@ -1,0 +1,43 @@
+body {
+	margin: 0;
+	font-size: 16px;
+}
+
+a {
+	outline: none;
+	color: #4394D5;
+
+	&:hover, &:focus {
+		color: #20A1FF;
+	}
+}
+
+table {
+	// border-collapse: collapse;
+	border-spacing: 0;
+	border: 0;
+}
+
+/* select:-moz-focusring {
+	color: transparent;
+} */
+
+/* button {
+	cursor: pointer;
+}
+
+button::-moz-focus-inner {
+	border: 0;
+} */
+
+header, footer, nav, main, article, section {
+	display: block;
+}
+
+input {
+	&[type="text"], &[type="password"], &[type="email"] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+}

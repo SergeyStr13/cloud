@@ -1,0 +1,8 @@
+<h1>{{ title }}</h1>
+<nav class="sub-menu">
+	<ul>
+		{% for alias, item in items %}
+			<li><a href="{{ item.url }}" {{ (active == alias) ? 'class="active"' }}>{{ item.title }}</a></li>
+		{% endfor %}
+	</ul>
+</nav>

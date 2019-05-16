@@ -15,6 +15,7 @@ class UserForm extends ValidationForm {
 			'login' =>              ['type' => 'input',         'label' => 'Логин'],
 			'password' =>           ['type' => 'passwordView',  'label' => 'Пароль'],
 			'passwordConfirm' =>    ['type' => 'passwordView',  'label' => 'Подтверждение пароля'],
+			'email' =>   			['type' => 'input',        	'label' => 'E-mail'],
 			'group' =>   			['type' => 'select',        'label' => 'Группа'],
 		];
 	}
@@ -33,6 +34,7 @@ class UserForm extends ValidationForm {
 		return [
 			'login' => 'required',
 			'password' => $this->isUpdate ? [] : ['required'], // 'equal' => 'passwordConfirm'
+			'email' => 'required',
 			'group' => 'required',
 		];
 	}
@@ -42,7 +44,7 @@ class UserForm extends ValidationForm {
 		
 		$password = $data->get('password');
 		$this->userValues = $data
-			->only('login', 'group')
+			->only('login', 'group', 'email')
 			->when($password, function(SupportCollection $c) use ($password) {
 				return $c->merge(['password' => User::hashPassword($password)]);
 			})

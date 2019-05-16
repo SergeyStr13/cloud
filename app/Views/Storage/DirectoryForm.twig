@@ -1,0 +1,28 @@
+{% extends layout %}
+
+{% set pageTitle = 'Добавление каталога' %}
+
+{% block content %}
+	<div class="container">
+		<section class="section">
+			<h1>{{ pageTitle }}</h1>
+
+			<div class="width-7">
+				{% autoescape false %}
+					{{ form.messages }}
+					{{ form.begin({id: 'directory-form'}) }}
+						{{ form.field('title') }}
+
+						{% spaceless %}
+							<div class="form-toolbar">
+								{{ form.button('save') }}
+								{{ form.button('cancel', {href: uriCancel}) }}
+							</div>
+						{% endspaceless %}
+					{{ form.end }}
+				{% endautoescape %}
+			</div>
+
+		</section>
+	</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+@import '../config';
+
+.checkbox {
+	opacity: 0;
+	margin: 0;
+	position: absolute;
+	pointer-events: none;
+
+	~ .checkbox-icon {
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		border: 2px solid $checkbox-border-cl;
+		border-radius: 3px;
+		background-color: $checkbox-bg-cl;
+		box-sizing: border-box;
+
+		&:before {
+			pointer-events: none;
+			color: $checkbox-checked-icon-cl;
+			content: "\F12C";
+			display: inline-block;
+			font: normal normal normal 24px/1 "Material Design Icons";
+			font-size: 1rem;
+			text-rendering: auto;
+			line-height: 14px;
+			vertical-align: top;
+			margin-left: -1px;
+			opacity: 0;
+		}
+	}
+
+	&:focus ~ .checkbox-icon {
+		// box-shadow: 0 0 2px rgba(0, 63, 114, 0.4);
+		box-shadow: 0 0 0 2px rgba(156, 197, 231, 0.5);
+		background-color: $checkbox-focus-bg-cl;
+		border-color: $checkbox-focus-border-cl;
+	}
+
+	&:checked ~ .checkbox-icon {
+		background-color: $checkbox-checked-bg-cl;
+		border-color: $checkbox-checked-border-cl;
+		&:before {
+			opacity: 1;
+		}
+	}
+}

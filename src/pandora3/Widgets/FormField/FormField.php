@@ -1,8 +1,10 @@
 <?php
 namespace Pandora3\Widgets\FormField;
 
-use Pandora3\Core\Widget\Exception\WidgetRenderException;
-use Pandora3\Core\Widget\Widget;
+use Pandora3\Core\Container\Container;
+use Pandora3\Core\Interfaces\RendererInterface;
+use Pandora3\Libs\Renderer\PhpRenderer;
+use Pandora3\Libs\Widget\Widget;
 
 /**
  * @property-read mixed $value
@@ -26,6 +28,13 @@ abstract class FormField extends Widget {
 		parent::__construct($context);
 		$this->name = $name;
 		$this->setValue($value);
+	}
+
+	/**
+	 * @param Container $container
+	 */
+	protected function dependencies(Container $container): void {
+		$container->setShared(RendererInterface::class, PhpRenderer::class);
 	}
 	
 	/**
@@ -95,24 +104,24 @@ abstract class FormField extends Widget {
 	public function getLabel(): string {
 		return $this->context['label'] ?? '';
 	}
-	
-	// todo: move to trait
+
 	/**
-	 * Preparing context to render
-	 * @param array $context    merged from: local context, params and context overrides
-	 * @return array
+	 * {@inheritdoc}
 	 */
 	protected function beforeRender(array $context): array {
-		return $context;
+		return array_replace(
+			$this->context,
+			$this->getParams(),
+			$context
+		);
 	}
 
-	// todo: PhpRenderer
-	/**
+	/* *
 	 * @param array $contextOverride
 	 * @return string
 	 * @throws WidgetRenderException
 	 */
-	public function render(array $contextOverride = []): string {
+	/* public function render(array $contextOverride = []): string {
 		// $renderer = new PhpRenderer(__PATH__.'/Views');
 		$viewPath = $this->getView();
 		$context = $this->beforeRender(array_replace(
@@ -129,6 +138,6 @@ abstract class FormField extends Widget {
 			$className = get_class($this);
 			throw new WidgetRenderException("Rendering view '$viewPath' failed for [$className]", E_WARNING, $ex);
 		}
-	}
+	} */
 
 }

@@ -2,7 +2,7 @@
 namespace Pandora3\Core\Controller\Exception;
 
 use RuntimeException;
-use Pandora3\Core\Application\Exception\CoreException;
+use Pandora3\Core\Interfaces\Exception\CoreException;
 
 /**
  * Class ControllerRenderViewException
